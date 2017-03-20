@@ -28,7 +28,15 @@ function findMatches( word ){
 };
 
 function displayMatches(){
-  console.log( this.value )
+  const matchArray = findMatches( this.value );
+  const html = matchArray.map( match => {
+    return `
+      <li>
+        <span>${ match.city }, ${ match.state }</span>
+      </li>
+    `
+  }).join('');
+  return suggestions.innerHTML = html;
 };
 
 const searchInput = document.querySelector( '.search' );
