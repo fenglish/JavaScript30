@@ -27,12 +27,17 @@ function findMatches( word ){
   })
 };
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 function displayMatches(){
   const matchArray = findMatches( this.value );
   const html = matchArray.map( match => {
     return `
       <li>
-        <span>${ match.city }, ${ match.state }</span>
+        <span class="name">${ match.city }, ${ match.state }</span>
+        <span class="population">${ numberWithCommas( match.population ) }</span>
       </li>
     `
   }).join('');
